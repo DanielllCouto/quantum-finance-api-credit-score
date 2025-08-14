@@ -10,6 +10,8 @@ import json
 import boto3
 import joblib
 
+
+
 model = joblib.load('model/model.pkl')
 
 with open('model/model_metadata.json', 'r', encoding="utf-8") as f:
@@ -40,7 +42,7 @@ def write_real_data(data, prediction):
 
     s3 = boto3.client('s3')
 
-    bucket_name = 'quantum-finance'
+    bucket_name = 'quantum-finance-credit-score'
     s3_path = 'credit-score-real-data'
 
     try:

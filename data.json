@@ -1,0 +1,25 @@
+{
+    "data" : {
+        "idade": 35,
+        "renda_anual": 85000.0,
+        "salario_liquido_mensal": 5500.0,
+        "qtd_contas_bancarias": 3,
+        "qtd_cartoes_credito": 2,
+        "taxa_juros": 2.5,
+        "qtd_emprestimos": 1,
+        "dias_atraso_pagamento": 0,
+        "qtd_pagamentos_atrasados": 0,
+        "variacao_limite_credito": 500.0,
+        "qtd_consultas_credito": 2,
+        "divida_pendente": 1500.0,
+        "percentual_utilizacao_credito": 35.5,
+        "total_emprestimos_mensal": 800.0,
+        "valor_investido_mensal": 1200.0,
+        "saldo_mensal": 3000.0,
+        "tempo_historico_credito_meses": 72,
+        "ocupacao": "Engineer",
+        "pagamento_valor_minimo": "Yes",
+        "comportamento_pagamento": "Low_spent_Medium_value_payments",
+        "tipos_emprestimos": "Personal Loan"
+    }
+}
