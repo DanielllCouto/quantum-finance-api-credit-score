@@ -32,7 +32,7 @@ def write_real_data(data, prediction):
     now = datetime.now()
     now_formatted = now.strftime("%Y-%m-%d %H:%M:%S")
 
-    # Nome do arquivo inclui timestamp no formato YYYYMMDD_HHMMSS 
+    # Nome do arquivo inclui timestamp no formato YYYYMMDD_HHMMSS
     # para evitar colisão e manter histórico de inferências
     file_name = f"{now.strftime('%Y%m%d_%H%M%S')}_credit_score_data.csv"
 
@@ -68,14 +68,14 @@ def input_metrics(data, prediction):
         prediction (int): valor de predição.
     """
     # Mapeamento de classes numéricas para rótulos de risco
-    RISK_CATEGORY_MAP = {
+    risk_category_map = {
         0: "Poor",
         1: "Standard",
         2: "Good"
     }
 
     # Obtém o rótulo da predição
-    prediction_label = RISK_CATEGORY_MAP.get(prediction, "Unknown")
+    prediction_label = risk_category_map.get(prediction, "Unknown")
 
     # Envia métrica de predição para o CloudWatch
     cloudwatch.put_metric_data(
@@ -97,7 +97,7 @@ def input_metrics(data, prediction):
                     'Value': 1,                      
                     'Unit': 'Count',
                     'Dimensions': [
-                        {'Name': key, 'Value': str(value)}  
+                        {'Name': key, 'Value': str(value)}
                     ]
                 },
             ],
@@ -138,33 +138,27 @@ def prepare_payload(data):
 
     # Dicionário de categorias, excluindo as referências dropadas
     conditions = {
-        # ocupacao – Opção Accountant se nenhuma condição satisfazer
-        "ocupacao": {
-            "Architect", "Developer", "Doctor", "Engineer", "Entrepreneur",
-            "Journalist", "Lawyer", "Manager", "Mechanic", "Media_Manager",
-            "Musician", "Not Informed", "Scientist", "Teacher", "Writer"
-        },
-
-        # pagamento_valor_minimo – Opção No se nenhuma condição satisfazer
-        "pagamento_valor_minimo": {
-            "Not Informed", "Yes"
-        },
-
-        # comportamento_pagamento – Opção High_spent_Large_value_payments se nenhuma condição satisfazer
-        "comportamento_pagamento": {
-            "High_spent_Medium_value_payments", "High_spent_Small_value_payments",
-            "Low_spent_Large_value_payments", "Low_spent_Medium_value_payments",
-            "Low_spent_Small_value_payments"
-        },
-
-        # tipos_emprestimos – Opção Auto Loan se nenhuma condição satisfazer
-        "tipos_emprestimos": {
-            "Credit-Builder Loan", "Debt Consolidation Loan", "Home Equity Loan",
-            "Mortgage Loan", "Not Specified", "Payday Loan", "Personal Loan",
-            "Student Loan", "Two or More Types of Loan"
-        }
+    "ocupacao": [
+        "Architect", "Developer", "Doctor", "Engineer", "Entrepreneur",
+        "Journalist", "Lawyer", "Manager", "Mechanic", "Media_Manager",
+        "Musician", "Not Informed", "Scientist", "Teacher", "Writer"
+    ],
+    "pagamento_valor_minimo": [
+        "Not Informed", "Yes"
+    ],
+    "comportamento_pagamento": [
+        "High_spent_Medium_value_payments",
+        "High_spent_Small_value_payments",
+        "Low_spent_Large_value_payments",
+        "Low_spent_Medium_value_payments",
+        "Low_spent_Small_value_payments"
+    ],
+    "tipos_emprestimos": [
+        "Credit-Builder Loan", "Debt Consolidation Loan", "Home Equity Loan",
+        "Mortgage Loan", "Not Specified", "Payday Loan", "Personal Loan",
+        "Student Loan", "Two or More Types of Loan"
+    ],
     }
-
     # Loop para gerar o vetor de dummies na ordem definida
     for key, values in conditions.items():
         for value in values:
