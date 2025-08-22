@@ -137,7 +137,7 @@ def prepare_payload(data):
     data_processed.append(int(data["tempo_historico_credito_meses"]))
 
     # Dicionário de categorias, excluindo as referências dropadas no get_dummies
-    # e mantendo a ordem definida no modelo de machine learning
+    # e mantendo a ordem definida no modelo
     conditions = {
     "ocupacao": [
         "Architect", "Developer", "Doctor", "Engineer", "Entrepreneur",
