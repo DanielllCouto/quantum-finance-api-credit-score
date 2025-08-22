@@ -163,7 +163,7 @@ def prepare_payload(data):
     # Loop para gerar o vetor de dummies na ordem definida
     for key, values in conditions.items():
         for value in values:
-            data_processed.append(True if data[key] == value else False)
+            data_processed.append(data[key] == value)
 
     return data_processed
 def handler(event, context=False):
