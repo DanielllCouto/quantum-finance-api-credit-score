@@ -3,6 +3,7 @@ Função para executar predição do score de crédito com base nos parâmetros 
 como modelo, processador, memória etc.
 Utiliza modelo que precisa ser baixado do repositório de registro de modelos em toda 
 implantação nova.
+Teste Ci
 """
 
 from datetime import datetime
