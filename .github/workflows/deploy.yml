@@ -45,14 +45,12 @@ jobs:
     - name: Linting
       run: pylint src
 
-    # --- habilita build arm64 no runner amd64 ---
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    # Build ARM64 e push direto para o ECR
     - name: Build and Push (arm64) to ECR
       run: |
         docker buildx build \
