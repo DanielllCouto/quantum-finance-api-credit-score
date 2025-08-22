@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      contents: read
       id-token: write
 
     steps:
@@ -37,7 +38,7 @@ jobs:
       run: python -m pip install -r requirements.txt
 
     - name: Model download
-      run: python -m model_downloader  
+      run: python -m model_downloader
 
     - name: Unit testing
       run: pytest
@@ -45,19 +46,23 @@ jobs:
     - name: Linting
       run: pylint src
 
+    # --- habilita build arm64 no runner amd64 ---
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: Build and Push (arm64) to ECR
-      run: |
-        docker buildx build \
-          --platform linux/arm64 \
-          -t 010928227743.dkr.ecr.us-east-1.amazonaws.com/quantum-finance/credit-score:latest \
-          --push \
-          .
+    # Build ARM64 e push direto para o ECR (compatível com Lambda)
+    - name: Build and Push (arm64) to ECR - Lambda compatible
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        platforms: linux/arm64
+        push: true
+        tags: 010928227743.dkr.ecr.us-east-1.amazonaws.com/quantum-finance/credit-score:latest
+        provenance: false
+        sbom: false
 
     - name: Update Lambda (image)
       run: |
