@@ -92,16 +92,16 @@ A API retorna um valor numérico (`prediction`) que representa a categoria de ri
 
 Um resumo das boas práticas de MLOps e desenvolvimento aplicadas:
 
-*   ✅ **Versionamento de Modelos (MLflow/DagsHub)**
-*   ✅ **Observabilidade (CloudWatch)**
-*   ✅ **Auditoria de Dados (S3)**
-*   ✅ **Testes (pytest)**
-*   ✅ **Segurança (API Key + Usage Plan)**
-*   ✅ **CI/CD (GitHub Actions + OIDC)**
-*   ✅ **Containerização (Docker/ECR)**
-*   ✅ **Arquitetura Serverless (AWS Lambda)**
-*   ✅ **Isolamento de Código**
-*   ✅ **Payload Consistente**
+   ✅ **Versionamento de Modelos (MLflow/DagsHub)**   
+   ✅ **Observabilidade (CloudWatch)**  
+   ✅ **Auditoria de Dados (S3)**  
+   ✅ **Testes (pytest)**  
+   ✅ **Segurança (API Key + Usage Plan)**  
+   ✅ **CI/CD (GitHub Actions + OIDC)**  
+   ✅ **Containerização (Docker/ECR)**  
+   ✅ **Arquitetura Serverless (AWS Lambda)**  
+   ✅ **Isolamento de Código**  
+   ✅ **Payload Consistente**  
 
 
 ## Documentação Completa
