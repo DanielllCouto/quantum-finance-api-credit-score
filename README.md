@@ -6,6 +6,14 @@ Este repositório contém a **API REST de inferência** para o modelo de Machine
 
 Integrada a um ecossistema MLOps robusto, a API consome modelos versionados via **MLflow/DagsHub** e serve previsões para aplicações downstream, como o frontend em Streamlit. Nosso foco é entregar um serviço de alta performance, seguro e com governança de modelo de ponta a ponta.
 
+## Contexto do Projeto
+
+Esta API é o componente de inferência de uma **plataforma completa de Machine Learning** end-to-end. Para entender como ela se integra com o pipeline de modelagem e o frontend da aplicação, consulte o repositório central:
+
+👉 **[Quantum Finance – Credit Score Project](https://github.com/DanielllCouto/quantum-finance-credit-score-project )**
+
+Nele você encontrará a visão geral da arquitetura, fluxo de CI/CD que orquestra o deploy desta API, e a integração com os demais componentes do projeto.
+
 ## Tecnologias e Linguagens Utilizadas
 
 *   **Python 3.10+**: Linguagem principal para o desenvolvimento da API e lógica de inferência.
